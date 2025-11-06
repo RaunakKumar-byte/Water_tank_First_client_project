@@ -1,0 +1,115 @@
+<div class="container py-5 fade-in">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">
+        <i class="bi bi-calendar-check text-primary-custom me-2"></i>My Bookings
+      </h1>
+
+      <!-- Upcoming Bookings -->
+      <div class="mb-5">
+        <h3 class="text-primary-custom mb-3">Upcoming Bookings</h3>
+
+        <div *ngIf="upcomingBookings.length === 0" class="alert alert-info">
+          <i class="bi bi-info-circle me-2"></i>No upcoming bookings found.
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6" *ngFor="let booking of upcomingBookings">
+            <div class="card h-100 shadow-sm border-primary">
+              <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <span class="fw-bold">{{ booking.id }}</span>
+                <span class="badge bg-light text-primary">{{ booking.bookingStatus | uppercase }}</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-primary-custom">{{ booking.serviceType }}</h5>
+
+                <div class="mb-3">
+                  <p class="mb-1">
+                    <i class="bi bi-person me-2"></i>
+                    <strong>{{ booking.customerName }}</strong>
+                  </p>
+                  <p class="mb-1">
+                    <i class="bi bi-telephone me-2"></i>{{ booking.phone }}
+                  </p>
+                  <p class="mb-1">
+                    <i class="bi bi-geo-alt me-2"></i>{{ booking.city }}, {{ booking.state }}
+                  </p>
+                </div>
+
+                <div class="mb-3">
+                  <p class="mb-1">
+                    <i class="bi bi-calendar-event me-2"></i>
+                    <strong>{{ booking.preferredDate }}</strong> at {{ booking.preferredTime }}
+                  </p>
+                  <p class="mb-1">
+                    <i class="bi bi-droplet me-2"></i>{{ booking.tankType }} - {{ booking.tankCapacity }}
+                  </p>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="badge" [ngClass]="getPaymentBadgeClass(booking.paymentStatus)">
+                    {{ booking.paymentStatus | uppercase }}
+                  </span>
+                  <span class="fs-5 fw-bold text-primary-custom">₹{{ booking.totalAmount }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completed Bookings -->
+      <div>
+        <h3 class="text-success mb-3">Completed Bookings</h3>
+
+        <div *ngIf="completedBookings.length === 0" class="alert alert-info">
+          <i class="bi bi-info-circle me-2"></i>No completed bookings found.
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6" *ngFor="let booking of completedBookings">
+            <div class="card h-100 shadow-sm">
+              <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                <span class="fw-bold">{{ booking.id }}</span>
+                <span class="badge bg-light text-success">{{ booking.bookingStatus | uppercase }}</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-success">{{ booking.serviceType }}</h5>
+
+                <div class="mb-3">
+                  <p class="mb-1">
+                    <i class="bi bi-person me-2"></i>
+                    <strong>{{ booking.customerName }}</strong>
+                  </p>
+                  <p class="mb-1">
+                    <i class="bi bi-telephone me-2"></i>{{ booking.phone }}
+                  </p>
+                  <p class="mb-1">
+                    <i class="bi bi-geo-alt me-2"></i>{{ booking.city }}, {{ booking.state }}
+                  </p>
+                </div>
+
+                <div class="mb-3">
+                  <p class="mb-1">
+                    <i class="bi bi-calendar-check me-2"></i>
+                    Completed on <strong>{{ booking.preferredDate }}</strong>
+                  </p>
+                  <p class="mb-1">
+                    <i class="bi bi-droplet me-2"></i>{{ booking.tankType }} - {{ booking.tankCapacity }}
+                  </p>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="badge bg-success">
+                    <i class="bi bi-check-circle me-1"></i>PAID
+                  </span>
+                  <span class="fs-5 fw-bold text-success">₹{{ booking.totalAmount }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

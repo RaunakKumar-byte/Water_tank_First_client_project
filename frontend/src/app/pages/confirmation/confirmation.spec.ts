@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Header } from './header';
+import { Confirmation } from './confirmation';
 
-describe('Header', () => {
-  let component: Header;
-  let fixture: ComponentFixture<Header>;
+describe('Confirmation', () => {
+  let component: Confirmation;
+  let fixture: ComponentFixture<Confirmation>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Header]
+      declarations: [Confirmation]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Header);
+    fixture = TestBed.createComponent(Confirmation);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

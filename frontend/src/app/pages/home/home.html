@@ -1,1 +1,105 @@
-<p>home works!</p>
+<!-- Hero Section -->
+<section class="hero-section text-center fade-in">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-4">Clean Water, Healthy Life</h1>
+    <p class="lead mb-4">Professional Water Tank Cleaning Services at Your Doorstep</p>
+    <a routerLink="/booking" class="btn btn-light btn-lg px-5 py-3">
+      Book Now <i class="bi bi-arrow-right ms-2"></i>
+    </a>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center section-title mb-5">Our Services</h2>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let service of services">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center p-4">
+            <div class="mb-3">
+              <i [class]="'bi ' + service.icon + ' text-primary-custom'" style="font-size: 3rem;"></i>
+            </div>
+            <h4 class="card-title mb-3">{{ service.title }}</h4>
+            <p class="card-text text-muted mb-3">{{ service.description }}</p>
+            <p class="h5 text-primary-custom fw-bold">Starting at {{ service.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-5 bg-light-blue">
+  <div class="container">
+    <h2 class="text-center section-title mb-5">Why Choose AquaClean?</h2>
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="text-center">
+          <i class="bi bi-people-fill text-primary-custom mb-3" style="font-size: 3rem;"></i>
+          <h5>Expert Team</h5>
+          <p class="text-muted">Trained and certified professionals</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="text-center">
+          <i class="bi bi-clock-fill text-primary-custom mb-3" style="font-size: 3rem;"></i>
+          <h5>Quick Service</h5>
+          <p class="text-muted">Same-day booking available</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="text-center">
+          <i class="bi bi-cash-coin text-primary-custom mb-3" style="font-size: 3rem;"></i>
+          <h5>Affordable Prices</h5>
+          <p class="text-muted">Transparent pricing, no hidden costs</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="text-center">
+          <i class="bi bi-award-fill text-primary-custom mb-3" style="font-size: 3rem;"></i>
+          <h5>Quality Assured</h5>
+          <p class="text-muted">100% satisfaction guarantee</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center section-title mb-5">What Our Customers Say</h2>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let testimonial of testimonials">
+        <div class="testimonial-card h-100">
+          <div class="mb-3">
+            <i class="bi bi-star-fill text-warning" *ngFor="let star of [1,2,3,4,5]"></i>
+          </div>
+          <p class="mb-3">"{{ testimonial.text }}"</p>
+          <div class="d-flex align-items-center">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                 style="width: 50px; height: 50px; font-size: 1.5rem;">
+              {{ testimonial.name.charAt(0) }}
+            </div>
+            <div>
+              <h6 class="mb-0">{{ testimonial.name }}</h6>
+              <small class="text-muted">{{ testimonial.location }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary text-white text-center">
+  <div class="container">
+    <h2 class="mb-4">Ready to Get Started?</h2>
+    <p class="lead mb-4">Book your water tank cleaning service today and enjoy clean, safe water!</p>
+    <a routerLink="/booking" class="btn btn-light btn-lg px-5">
+      Book Your Service Now
+    </a>
+  </div>
+</section>

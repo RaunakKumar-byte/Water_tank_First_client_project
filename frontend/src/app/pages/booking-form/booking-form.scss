@@ -1,0 +1,18 @@
+.card-header {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
+
+h4 i {
+  font-size: 1.2rem;
+}
