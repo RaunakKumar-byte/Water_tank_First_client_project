@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class BookingService {
 
-  private apiUrl='http://localhost:5000/api';
+  private apiUrl='https://water-tank-first-client-project.onrender.com/api';
 
     constructor(private http: HttpClient) {}
 
@@ -36,7 +36,7 @@ export class BookingService {
   sendContact(form: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/contact`, form);
   }
-  
+
 private currentBookingSubject = new BehaviorSubject<Booking | null>(null)
   public currentBooking$ = this.currentBookingSubject.asObservable()
 
