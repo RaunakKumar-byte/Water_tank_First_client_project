@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { BookingService } from '../../services/booking';
 
 @Component({
   selector: 'app-contact',
@@ -19,16 +20,20 @@ showSuccessAlert = false
     message: "",
   }
 
-  onSubmit(): void {
-    if (this.validateForm()) {
-      this.showSuccessAlert = true
-      this.resetForm()
+ successMessage = '';
 
-      setTimeout(() => {
-        this.showSuccessAlert = false
-      }, 5000)
-    }
+  constructor(private bookingService: BookingService) {}
+
+  onSubmit() {
+    this.bookingService.sendContact(this.contactForm).subscribe({
+      next: () => {
+        this.successMessage = 'Message sent successfully!';
+        this.contactForm = { name: '', email: '', message: '', subject: '', phone: ''};
+      },
+      error: (err) => console.error('Contact error:', err)
+    });
   }
+
 
   validateForm(): boolean {
     if (!this.contactForm.name || !this.contactForm.email || !this.contactForm.phone || !this.contactForm.message) {

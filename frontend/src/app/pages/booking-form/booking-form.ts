@@ -12,7 +12,8 @@ import type { Booking } from "../../models/booking.model";
 })
 export class BookingForm {
  showPaymentSection = false
-
+bookingSummary: any;
+  qrCode: string = '';
   formData = {
     customerName: "",
     email: "",
@@ -34,12 +35,23 @@ export class BookingForm {
     private router: Router,
   ) {}
 
+
   onSubmit(): void {
-    if (this.validateForm()) {
-      this.showPaymentSection = true
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })
+  if (!this.validateForm()) return;
+
+  this.bookingService.createBooking(this.formData).subscribe({
+    next: (res) => {
+      console.log('✅ Booking created:', res);
+      this.bookingSummary = res.booking;
+      this.qrCode = res.qrDataUrl;  // backend QR data URL
+      this.showPaymentSection = true; // show payment confirmation area
+    },
+    error: (err) => {
+      console.error('❌ Booking error:', err);
+      alert('Something went wrong while booking. Please try again.');
     }
-  }
+  });
+}
 
   validateForm(): boolean {
     const required = [
@@ -67,13 +79,41 @@ export class BookingForm {
   }
 
   confirmPayment(): void {
-    const booking: Booking = {
-      id: "BK" + Math.random().toString(36).substr(2, 9).toUpperCase(),
-      ...this.formData,
-      paymentStatus: "completed",
-      bookingStatus: "upcoming",
-      bookingDate: new Date().toISOString().split("T")[0],
-      totalAmount: this.calculateAmount(),
+    // Use the booking from backend response if available, otherwise create from form data
+    let booking: Booking;
+    
+    if (this.bookingSummary) {
+      // Map backend booking to frontend Booking interface
+      booking = {
+        id: this.bookingSummary.bookingId || this.bookingSummary.id,
+        customerName: this.bookingSummary.customerName,
+        email: this.bookingSummary.email,
+        phone: this.bookingSummary.phone,
+        address: this.bookingSummary.address,
+        city: this.bookingSummary.city,
+        state: this.bookingSummary.state,
+        pincode: this.bookingSummary.pincode,
+        tankType: this.bookingSummary.tankType,
+        tankCapacity: this.bookingSummary.tankCapacity,
+        serviceType: this.bookingSummary.serviceType,
+        preferredDate: this.bookingSummary.preferredDate,
+        preferredTime: this.bookingSummary.preferredTime,
+        additionalNotes: this.bookingSummary.additionalNotes,
+        paymentStatus: "completed",
+        bookingStatus: this.bookingSummary.bookingStatus || "upcoming",
+        bookingDate: this.bookingSummary.bookingDate || new Date().toISOString().split("T")[0],
+        totalAmount: this.bookingSummary.totalAmount || this.calculateAmount(),
+      }
+    } else {
+      // Fallback: create from form data (shouldn't happen if backend works)
+      booking = {
+        id: "BK" + Math.random().toString(36).substr(2, 9).toUpperCase(),
+        ...this.formData,
+        paymentStatus: "completed",
+        bookingStatus: "upcoming",
+        bookingDate: new Date().toISOString().split("T")[0],
+        totalAmount: this.calculateAmount(),
+      }
     }
 
     this.bookingService.setCurrentBooking(booking)

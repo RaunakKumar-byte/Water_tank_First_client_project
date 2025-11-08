@@ -1,1 +1,136 @@
-<p>confirmation works!</p>
+<div class="container py-5 fade-in" *ngIf="booking">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <!-- Success Message -->
+      <div class="card shadow-lg border-0 mb-4">
+        <div class="card-body text-center p-5">
+          <div class="mb-4">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+          </div>
+          <h2 class="text-success mb-3">Booking Confirmed!</h2>
+          <p class="lead text-muted">Your water tank cleaning service has been successfully booked.</p>
+        </div>
+      </div>
+
+      <!-- Booking Details -->
+      <div class="card shadow-lg border-0 mb-4">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">
+            <i class="bi bi-receipt me-2"></i>Booking Details
+          </h4>
+        </div>
+        <div class="card-body p-4">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <strong>Booking ID:</strong>
+            </div>
+            <div class="col-md-6">
+              <span class="badge bg-primary">{{ booking.id }}</span>
+            </div>
+          </div>
+
+          <hr>
+
+          <h5 class="text-primary-custom mb-3">
+            <i class="bi bi-person-fill me-2"></i>Customer Information
+          </h5>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Name:</strong></div>
+            <div class="col-md-8">{{ booking.customerName }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Email:</strong></div>
+            <div class="col-md-8">{{ booking.email }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Phone:</strong></div>
+            <div class="col-md-8">{{ booking.phone }}</div>
+          </div>
+
+          <hr>
+
+          <h5 class="text-primary-custom mb-3">
+            <i class="bi bi-geo-alt-fill me-2"></i>Service Address
+          </h5>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Address:</strong></div>
+            <div class="col-md-8">{{ booking.address }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>City:</strong></div>
+            <div class="col-md-8">{{ booking.city }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>State:</strong></div>
+            <div class="col-md-8">{{ booking.state }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Pincode:</strong></div>
+            <div class="col-md-8">{{ booking.pincode }}</div>
+          </div>
+
+          <hr>
+
+          <h5 class="text-primary-custom mb-3">
+            <i class="bi bi-tools me-2"></i>Service Details
+          </h5>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Tank Type:</strong></div>
+            <div class="col-md-8">{{ booking.tankType }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Tank Capacity:</strong></div>
+            <div class="col-md-8">{{ booking.tankCapacity }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Service Type:</strong></div>
+            <div class="col-md-8">{{ booking.serviceType }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Preferred Date:</strong></div>
+            <div class="col-md-8">{{ booking.preferredDate }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Preferred Time:</strong></div>
+            <div class="col-md-8">{{ booking.preferredTime }}</div>
+          </div>
+          <div class="row mb-2" *ngIf="booking.additionalNotes">
+            <div class="col-md-4"><strong>Additional Notes:</strong></div>
+            <div class="col-md-8">{{ booking.additionalNotes }}</div>
+          </div>
+
+          <hr>
+
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Total Amount:</strong></div>
+            <div class="col-md-8">
+              <h5 class="text-primary-custom mb-0">₹{{ booking.totalAmount }}</h5>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Payment Status:</strong></div>
+            <div class="col-md-8">
+              <span class="badge bg-success">{{ booking.paymentStatus }}</span>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-4"><strong>Booking Status:</strong></div>
+            <div class="col-md-8">
+              <span class="badge bg-primary">{{ booking.bookingStatus }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg me-3" (click)="viewBookings()">
+          <i class="bi bi-calendar-check me-2"></i>View My Bookings
+        </button>
+        <button class="btn btn-outline-primary btn-lg" (click)="goToHome()">
+          <i class="bi bi-house me-2"></i>Back to Home
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

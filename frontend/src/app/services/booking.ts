@@ -1,10 +1,42 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs"
-import type { Booking } from "../models/booking.model"
+import type { Booking } from "../models/booking.model";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class BookingService {
+
+  private apiUrl='http://localhost:5000/api';
+
+    constructor(private http: HttpClient) {}
+
+  // 1️⃣ Create booking
+  createBooking(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/bookings`, data);
+  }
+
+  // 2️⃣ Get all bookings
+  getBookings(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/bookings`);
+  }
+
+  // 3️⃣ Get booking by bookingId
+  getBookingById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/bookings/${id}`);
+  }
+
+  // 4️⃣ Update payment status
+  updatePayment(id: string, body: any): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/bookings/${id}/payment`, body);
+  }
+
+  // 5️⃣ Send contact message
+  sendContact(form: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/contact`, form);
+  }
+  
 private currentBookingSubject = new BehaviorSubject<Booking | null>(null)
   public currentBooking$ = this.currentBookingSubject.asObservable()
 
@@ -88,4 +120,5 @@ private currentBookingSubject = new BehaviorSubject<Booking | null>(null)
       },
     ]
   }
+
 }

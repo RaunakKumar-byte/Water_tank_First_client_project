@@ -189,40 +189,66 @@
               </button>
             </div>
           </form>
+<!-- Payment Section -->
+<div *ngIf="showPaymentSection" class="mt-5 pt-4 border-top">
+  <h4 class="text-primary-custom mb-4">
+    <i class="bi bi-credit-card me-2"></i>Payment
+  </h4>
 
-          <!-- Payment Section -->
-          <div *ngIf="showPaymentSection" class="mt-5 pt-4 border-top">
-            <h4 class="text-primary-custom mb-4">
-              <i class="bi bi-credit-card me-2"></i>Payment
-            </h4>
+  <div class="alert alert-info">
+    <i class="bi bi-info-circle me-2"></i>
+    Scan the QR code below to complete your payment
+  </div>
 
-            <div class="alert alert-info">
-              <i class="bi bi-info-circle me-2"></i>
-              Scan the QR code below to complete your payment
-            </div>
+  <div class="text-center my-4">
+    <div class="bg-light p-4 d-inline-block rounded">
 
-            <div class="text-center my-4">
-              <div class="bg-light p-4 d-inline-block rounded">
-                <img
-                  src="/placeholder.svg?height=200&width=200"
-                  alt="Payment QR Code"
-                  class="img-fluid"
-                  style="max-width: 200px;">
-              </div>
-              <p class="mt-3 fw-bold">Amount: ₹{{ calculateAmount() }}</p>
-            </div>
+      <!-- QR Code -->
+      <img
+        *ngIf="qrCode"
+        [src]="qrCode"
+        alt="Payment QR Code"
+        class="img-fluid"
+        style="max-width: 200px; border: 2px solid #007bff; border-radius: 10px; padding: 8px; background: #fff;"
+      />
 
-            <div class="d-grid gap-2">
-              <button
-                type="button"
-                class="btn btn-success btn-lg"
-                (click)="confirmPayment()">
-                <i class="bi bi-check-circle me-2"></i>I Have Completed the Payment
-              </button>
-            </div>
-          </div>
-        </div>
+      <!-- Booking Summary -->
+      <div *ngIf="bookingSummary" class="mt-4 text-start">
+        <h5 class="text-primary">Booking Summary</h5>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Booking ID:</strong> {{ bookingSummary.bookingId }}
+          </li>
+          <li class="list-group-item">
+            <strong>Name:</strong> {{ bookingSummary.customerName }}
+          </li>
+          <li class="list-group-item">
+            <strong>Service:</strong> {{ bookingSummary.serviceType }}
+          </li>
+          <li class="list-group-item">
+            <strong>Date:</strong> {{ bookingSummary.preferredDate }}
+          </li>
+          <li class="list-group-item">
+            <strong>Time Slot:</strong> {{ bookingSummary.preferredTime }}
+          </li>
+          <li class="list-group-item">
+            <strong>Amount:</strong> ₹{{ calculateAmount() }}
+          </li>
+        </ul>
       </div>
+
     </div>
+
+    <p class="mt-3 fw-bold">Amount: ₹{{ calculateAmount() }}</p>
+  </div>
+
+  <div class="d-grid gap-2">
+    <button
+      type="button"
+      class="btn btn-success btn-lg"
+      (click)="confirmPayment()"
+    >
+      <i class="bi bi-check-circle me-2"></i>I Have Completed the Payment
+    </button>
   </div>
 </div>
