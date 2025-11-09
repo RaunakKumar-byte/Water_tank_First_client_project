@@ -66,29 +66,29 @@
   </div>
 </section>
 
+
+
 <!-- Testimonials Section -->
-<section class="py-5">
+<section class="py-5 testimonials-section">
   <div class="container">
     <h2 class="text-center section-title mb-5">What Our Customers Say</h2>
-    <div class="row g-4">
-      <div class="col-md-4" *ngFor="let review of reviews">
-        <div class="testimonial-card h-100">
-          <div class="mb-3">
-           <p>⭐ {{review.rating}} / 5</p>
-          </div>
-          <div class="p-4">
-           <img *ngIf="review.photo" [src]="'https://water-tank-first-client-project.onrender.com' + review.photo" class="card-img-top" alt="user photo">
-          </div>
-          <p class="mb-3">"{{ review.feedback  }}"</p>
-          <div class="d-flex align-items-center">
-            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                 style="width: 50px; height: 50px; font-size: 1.5rem;">
-              {{ review.name.charAt(0) }}
-            </div>
-            <div>
-              <h6 class="mb-0">{{ review.name }}</h6>
-               <small class="text-muted">{{review.date | date:'medium'}}</small>
-            </div>
+
+    <div class="testimonials-wrapper">
+      <div class="testimonial-card" *ngFor="let review of reviews">
+        <div class="rating">⭐ {{ review.rating }} / 5</div>
+        <div class="photo">
+          <img
+            *ngIf="review.photo"
+            [src]="'https://water-tank-first-client-project.onrender.com' + review.photo"
+            alt="user photo"
+          />
+        </div>
+        <p class="feedback">"{{ review.feedback }}"</p>
+        <div class="user-info">
+          <div class="avatar">{{ review.name.charAt(0) }}</div>
+          <div>
+            <h6 class="mb-0">{{ review.name }}</h6>
+            <small class="text-muted">{{ review.date | date: 'medium' }}</small>
           </div>
         </div>
       </div>

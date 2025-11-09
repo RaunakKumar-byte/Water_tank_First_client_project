@@ -21,3 +21,136 @@
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
+
+
+
+
+
+
+
+
+.testimonials-section {
+  background: #f9fafb;
+
+  .section-title {
+    font-weight: 700;
+    color: #333;
+  }
+
+  .testimonials-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    scroll-behavior: smooth;
+  }
+
+  .testimonials-wrapper::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .testimonials-wrapper::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 10px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 320px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    scroll-snap-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  .rating {
+    font-weight: bold;
+    color: #f39c12;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ✅ Review Photo (not profile) */
+  .photo {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .feedback {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+
+    .avatar {
+      width: 45px;
+      height: 45px;
+      background: #007bff;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    h6 {
+      margin: 0;
+      font-weight: 600;
+      color: #333;
+    }
+
+    small {
+      font-size: 0.8rem;
+      color: #777;
+    }
+  }
+
+  /* ✅ Responsive */
+  @media (max-width: 768px) {
+    .testimonial-card {
+      flex: 0 0 260px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testimonial-card {
+      flex: 0 0 220px;
+    }
+
+    .photo {
+      height: 140px;
+    }
+  }
+}

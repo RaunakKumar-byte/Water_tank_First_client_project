@@ -10,7 +10,6 @@ import { Confirmation } from './confirmation/confirmation';
 import { Contact } from './contact/contact';
 import { MyBookings } from './my-bookings/my-bookings';
 
-
 @NgModule({
   declarations: [
     Pages,
@@ -18,12 +17,15 @@ import { MyBookings } from './my-bookings/my-bookings';
     BookingForm,
     Confirmation,
     Contact,
-    MyBookings
+    MyBookings,
+
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    FormsModule
+    
+    FormsModule,
+
   ]
 })
 export class PagesModule { }
