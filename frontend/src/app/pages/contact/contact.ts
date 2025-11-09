@@ -10,7 +10,7 @@ import { BookingService } from '../../services/booking';
   styleUrl: './contact.scss',
 })
 export class Contact {
-showSuccessAlert = false
+ showSuccessAlert = false;
 
   contactForm = {
     name: "",
@@ -18,29 +18,44 @@ showSuccessAlert = false
     phone: "",
     subject: "",
     message: "",
-  }
+  };
 
- successMessage = '';
+  successMessage = '';
 
   constructor(private bookingService: BookingService) {}
 
   onSubmit() {
-    this.bookingService.sendContact(this.contactForm).subscribe({
-      next: () => {
-        this.successMessage = 'Message sent successfully!';
-        this.contactForm = { name: '', email: '', message: '', subject: '', phone: ''};
-      },
-      error: (err) => console.error('Contact error:', err)
-    });
-  }
+    if (!this.validateForm()) return;
 
+    const { name, email, phone, subject, message } = this.contactForm;
+
+
+    const text = `*New Contact Message*%0A
+Name: ${name}%0A
+Email: ${email}%0A
+Phone: ${phone}%0A
+Subject: ${subject}%0A
+Message: ${message}`;
+
+    
+    const whatsappNumber = '919977917312'; // Example: +91 9876543210 → 919876543210
+
+    // ✅ Open WhatsApp chat
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+
+    // ✅ Reset form & show success alert
+    this.resetForm();
+    this.successMessage = 'Message sent on WhatsApp successfully!';
+    this.showSuccessAlert = true;
+    setTimeout(() => (this.showSuccessAlert = false), 3000);
+  }
 
   validateForm(): boolean {
     if (!this.contactForm.name || !this.contactForm.email || !this.contactForm.phone || !this.contactForm.message) {
-      alert("Please fill in all required fields")
-      return false
+      alert("Please fill in all required fields");
+      return false;
     }
-    return true
+    return true;
   }
 
   resetForm(): void {
@@ -50,6 +65,6 @@ showSuccessAlert = false
       phone: "",
       subject: "",
       message: "",
-    }
+    };
   }
 }

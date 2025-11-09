@@ -21,7 +21,7 @@
             </div>
             <h4 class="card-title mb-3">{{ service.title }}</h4>
             <p class="card-text text-muted mb-3">{{ service.description }}</p>
-            <p class="h5 text-primary-custom fw-bold">Starting at {{ service.price }}</p>
+
           </div>
         </div>
       </div>
@@ -71,20 +71,23 @@
   <div class="container">
     <h2 class="text-center section-title mb-5">What Our Customers Say</h2>
     <div class="row g-4">
-      <div class="col-md-4" *ngFor="let testimonial of testimonials">
+      <div class="col-md-4" *ngFor="let review of reviews">
         <div class="testimonial-card h-100">
           <div class="mb-3">
-            <i class="bi bi-star-fill text-warning" *ngFor="let star of [1,2,3,4,5]"></i>
+           <p>⭐ {{review.rating}} / 5</p>
           </div>
-          <p class="mb-3">"{{ testimonial.text }}"</p>
+          <div class="p-4">
+           <img *ngIf="review.photo" [src]="'https://water-tank-first-client-project.onrender.com' + review.photo" class="card-img-top" alt="user photo">
+          </div>
+          <p class="mb-3">"{{ review.feedback  }}"</p>
           <div class="d-flex align-items-center">
             <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
                  style="width: 50px; height: 50px; font-size: 1.5rem;">
-              {{ testimonial.name.charAt(0) }}
+              {{ review.name.charAt(0) }}
             </div>
             <div>
-              <h6 class="mb-0">{{ testimonial.name }}</h6>
-              <small class="text-muted">{{ testimonial.location }}</small>
+              <h6 class="mb-0">{{ review.name }}</h6>
+               <small class="text-muted">{{review.date | date:'medium'}}</small>
             </div>
           </div>
         </div>
@@ -92,6 +95,39 @@
     </div>
   </div>
 </section>
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">Customer Reviews</h2>
+
+  <!-- Add Review Form -->
+  <div class="card mb-5 shadow">
+    <div class="card-body">
+      <h5>Add Your Review</h5>
+      <form (ngSubmit)="submitReview()">
+        <div class="mb-3">
+          <input type="text" [(ngModel)]="formData.name" name="name" placeholder="Your Name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" [(ngModel)]="formData.email" name="email" placeholder="Your Email" class="form-control">
+        </div>
+        <div class="mb-3">
+          <select [(ngModel)]="formData.rating" name="rating" class="form-select">
+            <option *ngFor="let r of [5,4,3,2,1]" [value]="r">{{r}} ⭐</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <textarea [(ngModel)]="formData.feedback" name="feedback" placeholder="Your feedback..." class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+          <input type="file" (change)="onFileChange($event)" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+    </div>
+  </div>
+
+
+</div>
 
 <!-- CTA Section -->
 <section class="py-5 bg-primary text-white text-center">

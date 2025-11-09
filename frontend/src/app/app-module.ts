@@ -8,12 +8,14 @@ import { App } from './app';
 import { Header } from './shared/header/header';
 import { Footer } from './shared/footer/footer';
 import { CommonModule } from '@angular/common';
+import { Ex } from './ex/ex';
 
 @NgModule({
   declarations: [
     App,
     Header,
-    Footer
+    Footer,
+    Ex
   ],
   imports: [
     BrowserModule,
