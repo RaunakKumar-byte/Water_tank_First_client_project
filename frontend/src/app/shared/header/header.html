@@ -18,25 +18,29 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" [class.show]="!isMenuCollapsed" id="navbarNav">
+    <div 
+      class="collapse navbar-collapse mobile-menu" 
+      [class.show]="!isMenuCollapsed" 
+      [class.menu-open]="!isMenuCollapsed"
+      id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu(); scrollToTopOnClick()">
             Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/booking" routerLinkActive="active">
+          <a class="nav-link" routerLink="/booking" routerLinkActive="active" (click)="closeMenu(); scrollToTopOnClick()">
             Book Now
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/my-bookings" routerLinkActive="active">
+          <a class="nav-link" routerLink="/my-bookings" routerLinkActive="active" (click)="closeMenu(); scrollToTopOnClick()">
             My Bookings
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active" (click)="closeMenu(); scrollToTopOnClick()">
             Contact
           </a>
         </li>

@@ -9,6 +9,77 @@
   }
 }
 
+// Mobile menu animation - slides from top
+.mobile-menu {
+  @media (max-width: 991.98px) {
+    // Initial state - hidden above viewport
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: max-height 0.4s ease-in-out, 
+                opacity 0.4s ease-in-out, 
+                transform 0.4s ease-in-out;
+    
+    // Open state - visible and slides down from top
+    &.menu-open,
+    &.show {
+      max-height: 500px; // Adjust based on menu content
+      opacity: 1;
+      transform: translateY(0);
+      transition: max-height 0.4s ease-in-out, 
+                  opacity 0.4s ease-in-out, 
+                  transform 0.4s ease-in-out;
+    }
+    
+    // Nav items animation - stagger effect
+    .navbar-nav {
+      padding-top: 1rem;
+      
+      .nav-item {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+    }
+    
+    // Animate items when menu opens
+    &.menu-open,
+    &.show {
+      .navbar-nav .nav-item {
+        opacity: 1;
+        transform: translateY(0);
+        
+        // Stagger animation for each item
+        &:nth-child(1) {
+          transition-delay: 0s;
+        }
+        &:nth-child(2) {
+          transition-delay: 0.1s;
+        }
+        &:nth-child(3) {
+          transition-delay: 0.2s;
+        }
+        &:nth-child(4) {
+          transition-delay: 0.3s;
+        }
+      }
+    }
+  }
+  
+  // Desktop - normal behavior
+  @media (min-width: 992px) {
+    max-height: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    
+    .navbar-nav .nav-item {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
 .navbar-brand {
   font-size: 1.25rem; // Changed from fixed 1.5rem
   transition: transform 0.3s ease;
