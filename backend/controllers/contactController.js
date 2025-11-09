@@ -1,7 +1,7 @@
 // controllers/contactController.js
-const Contact = require('../models/Contact');
+import Contact from '../models/Contact.js';
 
-exports.submitContact = async (req, res) => {
+export const submitContact = async (req, res) => {
   try {
     const { name, email, phone, subject, message } = req.body;
     if (!name || !email || !message) {
@@ -25,7 +25,7 @@ exports.submitContact = async (req, res) => {
   }
 };
 
-exports.getContacts = async (req, res) => {
+export const getContacts = async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });
     res.json(contacts);

@@ -1,5 +1,5 @@
 // utils/generateId.js
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 function generateBookingId() {
   // Example: BT-20251105-4f3c9a (prefix + YYYYMMDD + random)
@@ -11,4 +11,4 @@ function generateBookingId() {
   return `BT-${y}${m}${d}-${rand}`;
 }
 
-module.exports = generateBookingId;
+export default generateBookingId;

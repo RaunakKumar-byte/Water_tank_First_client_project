@@ -1,11 +1,12 @@
 // routes/contactRoutes.js
-const express = require('express');
-const router = express.Router();
-const contactController = require('../controllers/contactController');
+import express from 'express';
+import { submitContact, getContacts } from '../controllers/contactController.js';
 
-router.post('/', contactController.submitContact);
+const router = express.Router();
+
+router.post('/', submitContact);
 
 // Optional admin route to view messages
-router.get('/', contactController.getContacts);
+router.get('/', getContacts);
 
-module.exports = router;
+export default router;

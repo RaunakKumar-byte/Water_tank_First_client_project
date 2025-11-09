@@ -1,18 +1,17 @@
 // routes/bookingRoutes.js
-const express = require('express');
+import express from "express";
+import {
+  createBooking,
+  getBookings,
+  getBookingById,
+  updatePaymentStatus
+} from "../controllers/bookingController.js";
+
 const router = express.Router();
-const bookingController = require('../controllers/bookingController');
 
-// POST create new booking (returns booking + qrDataUrl)
-router.post('/', bookingController.createBooking);
+router.post("/", createBooking);
+router.get("/", getBookings);
+router.get("/:id", getBookingById);
+router.patch("/:id/payment", updatePaymentStatus);
 
-// GET all bookings
-router.get('/', bookingController.getBookings);
-
-// GET booking by bookingId (use /api/bookings/:id)
-router.get('/:id', bookingController.getBookingById);
-
-// PATCH to update payment status (optional)
-router.patch('/:id/payment', bookingController.updatePaymentStatus);
-
-module.exports = router;
+export default router;
