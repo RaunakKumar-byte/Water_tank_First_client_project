@@ -1,23 +1,25 @@
-<!-- Hero Section -->
+<!-- Responsive Hero Section -->
 <section class="hero-section text-center fade-in">
   <div class="container">
-    <h1 class="display-4 fw-bold mb-4">Clean Water, Healthy Life</h1>
-    <p class="lead mb-4">Professional Water Tank Cleaning Services at Your Doorstep</p>
-    <a routerLink="/booking" class="btn btn-light btn-lg px-5 py-3">
+    <h1 class="display-4 fw-bold mb-3 mb-md-4">Clean Water, Healthy Life</h1>
+    <p class="lead mb-3 mb-md-4 px-2 px-md-0">Professional Water Tank Cleaning Services at Your Doorstep</p>
+    <a routerLink="/booking" class="btn btn-light btn-lg px-3 px-md-5 py-2 py-md-3">
       Book Now <i class="bi bi-arrow-right ms-2"></i>
     </a>
   </div>
 </section>
 
-<section class="py-5">
+<!-- Responsive Services Section -->
+<section class="py-4 py-md-5">
   <div class="container">
-    <h2 class="text-center section-title mb-5">Our Services</h2>
-    <div class="row g-4">
-      <div class="col-md-4" *ngFor="let service of services">
+    <h2 class="text-center section-title mb-4 mb-md-5">Our Services</h2>
+    <div class="row g-3 g-md-4">
+      <!-- Responsive columns: full width on mobile, 2 columns on tablet, 3 on desktop -->
+      <div class="col-12 col-sm-6 col-md-4" *ngFor="let service of services">
         <div class="card h-100 border-0 shadow-sm">
           <div class="card-body text-center p-4">
             <div class="mb-3">
-              <i [class]="'bi ' + service.icon + ' text-primary-custom'" style="font-size: 3rem;"></i>
+              <i [class]="'bi ' + service.icon + ' text-primary-custom service-icon'"></i>
             </div>
             <h4 class="card-title mb-3">{{ service.title }}</h4>
             <p class="card-text text-muted mb-3">{{ service.description }}</p>
@@ -29,37 +31,38 @@
   </div>
 </section>
 
-<!-- Why Choose Us Section -->
-<section class="py-5 bg-light-blue">
+<!-- Responsive Why Choose Us Section -->
+<section class="py-4 py-md-5 bg-light-blue">
   <div class="container">
-    <h2 class="text-center section-title mb-5">Why Choose AquaClean?</h2>
-    <div class="row g-4">
-      <div class="col-md-3 col-sm-6">
+    <h2 class="text-center section-title mb-4 mb-md-5">Why Choose AquaClean?</h2>
+    <div class="row g-3 g-md-4">
+      <!-- Responsive: 2 columns on mobile, 2 on tablet, 4 on desktop -->
+      <div class="col-6 col-md-3 col-sm-6">
         <div class="text-center">
-          <i class="bi bi-people-fill text-primary-custom mb-3" style="font-size: 3rem;"></i>
-          <h5>Expert Team</h5>
-          <p class="text-muted">Trained and certified professionals</p>
+          <i class="bi bi-people-fill text-primary-custom mb-2 mb-md-3 service-icon"></i>
+          <h5 class="mb-2">Expert Team</h5>
+          <p class="text-muted small">Trained and certified professionals</p>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-6 col-md-3 col-sm-6">
         <div class="text-center">
-          <i class="bi bi-clock-fill text-primary-custom mb-3" style="font-size: 3rem;"></i>
-          <h5>Quick Service</h5>
-          <p class="text-muted">Same-day booking available</p>
+          <i class="bi bi-clock-fill text-primary-custom mb-2 mb-md-3 service-icon"></i>
+          <h5 class="mb-2">Quick Service</h5>
+          <p class="text-muted small">Same-day booking available</p>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-6 col-md-3 col-sm-6">
         <div class="text-center">
-          <i class="bi bi-cash-coin text-primary-custom mb-3" style="font-size: 3rem;"></i>
-          <h5>Affordable Prices</h5>
-          <p class="text-muted">Transparent pricing, no hidden costs</p>
+          <i class="bi bi-cash-coin text-primary-custom mb-2 mb-md-3 service-icon"></i>
+          <h5 class="mb-2">Affordable Prices</h5>
+          <p class="text-muted small">Transparent pricing, no hidden costs</p>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-6 col-md-3 col-sm-6">
         <div class="text-center">
-          <i class="bi bi-award-fill text-primary-custom mb-3" style="font-size: 3rem;"></i>
-          <h5>Quality Assured</h5>
-          <p class="text-muted">100% satisfaction guarantee</p>
+          <i class="bi bi-award-fill text-primary-custom mb-2 mb-md-3 service-icon"></i>
+          <h5 class="mb-2">Quality Assured</h5>
+          <p class="text-muted small">100% satisfaction guarantee</p>
         </div>
       </div>
     </div>
@@ -68,10 +71,10 @@
 
 
 
-<!-- Testimonials Section -->
-<section class="py-5 testimonials-section">
+<!-- Responsive Testimonials Section -->
+<section class="py-4 py-md-5 testimonials-section">
   <div class="container">
-    <h2 class="text-center section-title mb-5">What Our Customers Say</h2>
+    <h2 class="text-center section-title mb-4 mb-md-5">What Our Customers Say</h2>
 
     <div class="testimonials-wrapper">
       <div class="testimonial-card" *ngFor="let review of reviews">
@@ -81,6 +84,7 @@
             *ngIf="review.photo"
             [src]="'https://water-tank-first-client-project.onrender.com' + review.photo"
             alt="user photo"
+            class="img-fluid"
           />
         </div>
         <p class="feedback">"{{ review.feedback }}"</p>
@@ -96,12 +100,13 @@
   </div>
 </section>
 
-<div class="container py-5">
-  <h2 class="text-center mb-4">Customer Reviews</h2>
+<!-- Responsive Customer Reviews Section -->
+<div class="container py-4 py-md-5">
+  <h2 class="text-center mb-3 mb-md-4">Customer Reviews</h2>
 
   <!-- Add Review Form -->
-  <div class="card mb-5 shadow">
-    <div class="card-body">
+  <div class="card mb-4 mb-md-5 shadow">
+    <div class="card-body p-3 p-md-4">
       <h5>Add Your Review</h5>
       <form (ngSubmit)="submitReview()">
         <div class="mb-3">
@@ -129,12 +134,12 @@
 
 </div>
 
-<!-- CTA Section -->
-<section class="py-5 bg-primary text-white text-center">
+<!-- Responsive CTA Section -->
+<section class="py-4 py-md-5 bg-primary text-white text-center">
   <div class="container">
-    <h2 class="mb-4">Ready to Get Started?</h2>
-    <p class="lead mb-4">Book your water tank cleaning service today and enjoy clean, safe water!</p>
-    <a routerLink="/booking" class="btn btn-light btn-lg px-5">
+    <h2 class="mb-3 mb-md-4 px-2 px-md-0">Ready to Get Started?</h2>
+    <p class="lead mb-3 mb-md-4 px-2 px-md-0">Book your water tank cleaning service today and enjoy clean, safe water!</p>
+    <a routerLink="/booking" class="btn btn-light btn-lg px-3 px-md-5">
       Book Your Service Now
     </a>
   </div>

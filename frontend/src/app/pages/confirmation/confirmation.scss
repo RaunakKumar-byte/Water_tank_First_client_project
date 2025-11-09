@@ -1,0 +1,19 @@
+// Responsive confirmation page styles
+.confirmation-icon {
+  font-size: 3rem; // Base size
+  
+  // Mobile: smaller icon
+  @media (max-width: 576px) {
+    font-size: 2.5rem;
+  }
+  
+  // Tablet: medium icon
+  @media (min-width: 577px) and (max-width: 992px) {
+    font-size: 3.5rem;
+  }
+  
+  // Desktop: full size
+  @media (min-width: 993px) {
+    font-size: 5rem;
+  }
+}

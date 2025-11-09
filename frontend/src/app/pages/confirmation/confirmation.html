@@ -1,30 +1,33 @@
-<div class="container py-5 fade-in" *ngIf="booking">
+<!-- Responsive Confirmation Page -->
+<div class="container py-4 py-md-5 fade-in" *ngIf="booking">
   <div class="row justify-content-center">
-    <div class="col-lg-8">
+    <!-- Responsive column: full width on mobile, 8 columns on desktop -->
+    <div class="col-12 col-lg-8">
       <!-- Success Message -->
       <div class="card shadow-lg border-0 mb-4">
-        <div class="card-body text-center p-5">
-          <div class="mb-4">
-            <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+        <div class="card-body text-center p-4 p-md-5">
+          <div class="mb-3 mb-md-4">
+            <i class="bi bi-check-circle-fill text-success confirmation-icon"></i>
           </div>
-          <h2 class="text-success mb-3">Booking Confirmed!</h2>
-          <p class="lead text-muted">Your water tank cleaning service has been successfully booked.</p>
+          <h2 class="text-success mb-3 fs-3 fs-md-2">Booking Confirmed!</h2>
+          <p class="lead text-muted px-2 px-md-0">Your water tank cleaning service has been successfully booked.</p>
         </div>
       </div>
 
-      <!-- Booking Details -->
+      <!-- Responsive Booking Details -->
       <div class="card shadow-lg border-0 mb-4">
         <div class="card-header bg-primary text-white">
-          <h4 class="mb-0">
+          <h4 class="mb-0 fs-5 fs-md-4">
             <i class="bi bi-receipt me-2"></i>Booking Details
           </h4>
         </div>
-        <div class="card-body p-4">
+        <div class="card-body p-3 p-md-4">
+          <!-- Responsive detail row: stacked on mobile, side-by-side on desktop -->
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-12 col-md-6 mb-2 mb-md-0">
               <strong>Booking ID:</strong>
             </div>
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
               <span class="badge bg-primary">{{ booking.id }}</span>
             </div>
           </div>
@@ -34,17 +37,18 @@
           <h5 class="text-primary-custom mb-3">
             <i class="bi bi-person-fill me-2"></i>Customer Information
           </h5>
+          <!-- Responsive customer info rows -->
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Name:</strong></div>
-            <div class="col-md-8">{{ booking.customerName }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Name:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.customerName }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Email:</strong></div>
-            <div class="col-md-8">{{ booking.email }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Email:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.email }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Phone:</strong></div>
-            <div class="col-md-8">{{ booking.phone }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Phone:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.phone }}</div>
           </div>
 
           <hr>
@@ -52,21 +56,22 @@
           <h5 class="text-primary-custom mb-3">
             <i class="bi bi-geo-alt-fill me-2"></i>Service Address
           </h5>
+          <!-- Responsive address rows -->
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Address:</strong></div>
-            <div class="col-md-8">{{ booking.address }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Address:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.address }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>City:</strong></div>
-            <div class="col-md-8">{{ booking.city }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>City:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.city }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>State:</strong></div>
-            <div class="col-md-8">{{ booking.state }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>State:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.state }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Pincode:</strong></div>
-            <div class="col-md-8">{{ booking.pincode }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Pincode:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.pincode }}</div>
           </div>
 
           <hr>
@@ -74,57 +79,59 @@
           <h5 class="text-primary-custom mb-3">
             <i class="bi bi-tools me-2"></i>Service Details
           </h5>
+          <!-- Responsive service detail rows -->
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Tank Type:</strong></div>
-            <div class="col-md-8">{{ booking.tankType }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Tank Type:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.tankType }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Tank Capacity:</strong></div>
-            <div class="col-md-8">{{ booking.tankCapacity }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Tank Capacity:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.tankCapacity }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Service Type:</strong></div>
-            <div class="col-md-8">{{ booking.serviceType }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Service Type:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.serviceType }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Preferred Date:</strong></div>
-            <div class="col-md-8">{{ booking.preferredDate }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Preferred Date:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.preferredDate }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Preferred Time:</strong></div>
-            <div class="col-md-8">{{ booking.preferredTime }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Preferred Time:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.preferredTime }}</div>
           </div>
           <div class="row mb-2" *ngIf="booking.additionalNotes">
-            <div class="col-md-4"><strong>Additional Notes:</strong></div>
-            <div class="col-md-8">{{ booking.additionalNotes }}</div>
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Additional Notes:</strong></div>
+            <div class="col-12 col-md-8">{{ booking.additionalNotes }}</div>
           </div>
 
           <hr>
 
+          <!-- Responsive payment info rows -->
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Total Amount:</strong></div>
-            <div class="col-md-8">
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Total Amount:</strong></div>
+            <div class="col-12 col-md-8">
               <h5 class="text-primary-custom mb-0">₹{{ booking.totalAmount }}</h5>
             </div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Payment Status:</strong></div>
-            <div class="col-md-8">
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Payment Status:</strong></div>
+            <div class="col-12 col-md-8">
               <span class="badge bg-success">{{ booking.paymentStatus }}</span>
             </div>
           </div>
           <div class="row mb-2">
-            <div class="col-md-4"><strong>Booking Status:</strong></div>
-            <div class="col-md-8">
+            <div class="col-12 col-md-4 mb-1 mb-md-0"><strong>Booking Status:</strong></div>
+            <div class="col-12 col-md-8">
               <span class="badge bg-primary">{{ booking.bookingStatus }}</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="text-center">
-        <button class="btn btn-primary btn-lg me-3" (click)="viewBookings()">
+      <!-- Responsive Action Buttons -->
+      <div class="text-center d-flex flex-column flex-md-row gap-2 gap-md-3 justify-content-center">
+        <button class="btn btn-primary btn-lg" (click)="viewBookings()">
           <i class="bi bi-calendar-check me-2"></i>View My Bookings
         </button>
         <button class="btn btn-outline-primary btn-lg" (click)="goToHome()">

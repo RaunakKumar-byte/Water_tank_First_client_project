@@ -1,3 +1,4 @@
+// Responsive booking form styles
 .card-header {
   background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
 }
@@ -5,6 +6,17 @@
 .form-label {
   font-weight: 600;
   color: #333;
+  font-size: 0.9rem;
+  
+  // Mobile: smaller font
+  @media (max-width: 576px) {
+    font-size: 0.85rem;
+  }
+  
+  // Desktop: full size
+  @media (min-width: 993px) {
+    font-size: 1rem;
+  }
 }
 
 .form-control:focus,
@@ -15,4 +27,30 @@
 
 h4 i {
   font-size: 1.2rem;
+  
+  // Mobile: smaller icon
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+}
+
+// Responsive QR code image
+.qr-code-image {
+  max-width: 12.5rem; // Changed from 200px to rem
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background: #fff;
+  
+  // Mobile: smaller QR code
+  @media (max-width: 576px) {
+    max-width: 10rem; // 160px equivalent
+    padding: 0.375rem;
+    border-radius: 8px;
+  }
+  
+  // Tablet: medium QR code
+  @media (min-width: 577px) and (max-width: 992px) {
+    max-width: 11.25rem; // 180px equivalent
+  }
 }

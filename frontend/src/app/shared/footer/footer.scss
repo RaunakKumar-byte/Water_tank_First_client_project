@@ -1,0 +1,47 @@
+// Responsive footer styles
+footer {
+  // Responsive social icons
+  .footer-social-icon {
+    transition: all 0.3s ease;
+    display: inline-block;
+    
+    &:hover {
+      transform: translateY(-3px);
+      color: var(--primary-color) !important;
+    }
+    
+    i {
+      font-size: 1.25rem; // Base size
+      
+      // Mobile: smaller icons
+      @media (max-width: 576px) {
+        font-size: 1rem;
+      }
+      
+      // Tablet: medium icons
+      @media (min-width: 577px) and (max-width: 992px) {
+        font-size: 1.125rem;
+      }
+      
+      // Desktop: full size
+      @media (min-width: 993px) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+  
+  // Responsive heading sizes
+  h5 {
+    font-size: 1rem; // Base size
+    
+    // Mobile: smaller headings
+    @media (max-width: 576px) {
+      font-size: 0.9rem;
+    }
+    
+    // Desktop: full size
+    @media (min-width: 993px) {
+      font-size: 1.25rem;
+    }
+  }
+}

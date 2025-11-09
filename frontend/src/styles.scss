@@ -74,20 +74,69 @@ body {
   }
 }
 
+// Responsive hero section - uses relative units and media queries
 .hero-section {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: white;
-  padding: 100px 0;
+  padding: 4rem 0; // Changed from 100px to rem
+  
+  // Mobile: smaller padding
+  @media (max-width: 576px) {
+    padding: 3rem 0;
+  }
+  
+  // Tablet: medium padding
+  @media (min-width: 577px) and (max-width: 992px) {
+    padding: 3.5rem 0;
+  }
+  
+  // Desktop: full padding
+  @media (min-width: 993px) {
+    padding: 6.25rem 0; // 100px equivalent
+  }
 }
 
+// Responsive section title
 .section-title {
   color: var(--primary-color);
   font-weight: 700;
   margin-bottom: 1rem;
+  
+  // Mobile: smaller font size
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+  }
+  
+  // Tablet: medium font size
+  @media (min-width: 577px) and (max-width: 992px) {
+    font-size: 1.75rem;
+  }
+  
+  // Desktop: default size
+  @media (min-width: 993px) {
+    font-size: 2rem;
+  }
 }
 
+// Responsive testimonial card
 .testimonial-card {
   background-color: var(--secondary-color);
   border-radius: 10px;
-  padding: 2rem;
+  padding: 1.5rem;
+  
+  // Mobile: smaller padding
+  @media (max-width: 576px) {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  // Tablet: medium padding
+  @media (min-width: 577px) and (max-width: 992px) {
+    padding: 1.25rem;
+  }
+  
+  // Desktop: full padding
+  @media (min-width: 993px) {
+    padding: 2rem;
+  }
 }
